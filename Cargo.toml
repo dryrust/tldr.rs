@@ -1,0 +1,28 @@
+# See: https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "tldr-traits"
+version = "0.0.0"
+authors = ["Arto Bendiken"]
+edition = "2024"
+#rust-version = "1.85"
+description = "Abstractions for TL;DR summarization."
+#documentation = "https://docs.rs/tldr-traits"
+readme = true
+homepage = "https://github.com/dryrust/tldr.rs"
+repository = "https://github.com/dryrust/tldr.rs"
+license = "Unlicense"
+keywords = ["tldr"]
+categories = ["rust-patterns", "text-processing"]
+publish = true
+
+[features]
+default = ["all", "std"]
+all = ["serde"]
+std = []
+unstable = []
+
+# Optional features:
+serde = []
+
+[dependencies]
