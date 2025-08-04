@@ -2,11 +2,11 @@
 
 [package]
 name = "tldr-traits"
-version = "0.0.0"
+version = "0.0.1"
 authors = ["Arto Bendiken"]
 edition = "2024"
 #rust-version = "1.85"
-description = "Abstractions for TL;DR summarization."
+description = "Abstractions for TL;DR summarization using the five Ws."
 #documentation = "https://docs.rs/tldr-traits"
 readme = true
 homepage = "https://github.com/dryrust/tldr.rs"
