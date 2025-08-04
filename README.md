@@ -5,12 +5,12 @@
 [![Package](https://img.shields.io/crates/v/tldr-traits)](https://crates.io/crates/tldr-traits)
 [![Documentation](https://docs.rs/tldr-traits/badge.svg)](https://docs.rs/tldr-traits)
 
-[Rust] abstractions for [TL;DR] summarization.
+[Rust] abstractions for [TL;DR] summarization using the [five Ws].
 
 ## ✨ Features
 
-- Provides the trait [`Tldr`] to generate TL;DR summaries.
-- Provides the trait [`ToTldr`] to convert objects into TL;DR summaries.
+- Provides the [`Tldr`] trait for generating TL;DR summaries.
+- Provides the [`ToTldr`] trait for converting objects into TL;DR summaries.
 - Supports TL;DR generation for multiple natural languages.
 - Zero required dependencies, only optional integrations.
 - Adheres to the Rust API Guidelines in its [naming conventions].
@@ -46,15 +46,30 @@ tldr = { version = "0", package = "tldr-traits", default-features = false, featu
 
 ### Importing the Library
 
-```rust
-use tldr::*;
+```rust,ignore
+use tldr::{Tldr, TldrContext, TldrSummary, ToTldr};
+```
+
+### Implementing the Trait
+
+```rust,ignore
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Tldr for Rectangle {
+    fn what(&self, _ctx: &TldrContext) -> Option<String> {
+        Some(format!("A rectangle with a width of {} and a height of {}.", self.width, self.height))
+    }
+}
 ```
 
 ## 📚 Reference
 
 ### [`ToTldr`]
 
-```rust
+```rust,ignore
 pub trait ToTldr {
     fn to_tldr(&self) -> Box<dyn Tldr>;
 }
@@ -62,7 +77,7 @@ pub trait ToTldr {
 
 ### [`Tldr`]
 
-```rust
+```rust,ignore
 pub trait Tldr {
     fn who(&self, ctx: &TldrContext) -> Option<String>;
     fn what(&self, ctx: &TldrContext) -> Option<String>;
@@ -112,9 +127,10 @@ git clone https://github.com/dryrust/tldr.rs.git
 
 [Rust]: https://rust-lang.org
 [TL;DR]: https://en.wikipedia.org/wiki/TL;DR
+[five Ws]: https://en.wikipedia.org/wiki/Five_Ws
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html
 
-[`Tldr`]: #
-[`TldrContext`]: #
-[`TldrSummary`]: #
-[`ToTldr`]: #
+[`Tldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.Tldr.html
+[`TldrContext`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrContext.html
+[`TldrSummary`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrSummary.html
+[`ToTldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.ToTldr.html
