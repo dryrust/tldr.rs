@@ -9,8 +9,9 @@
 
 ## ✨ Features
 
-- Provides the [`Tldr`] trait for generating TL;DR summaries.
-- Provides the [`ToTldr`] trait for converting objects into TL;DR summaries.
+- Provides the [`Tldr`](#tldr) trait for generating TL;DR summaries.
+- Provides the [`ToTldr`](#totldr) trait for converting objects into TL;DR
+  summaries.
 - Supports TL;DR generation for multiple natural languages.
 - Zero required dependencies, only optional integrations.
 - Adheres to the Rust API Guidelines in its [naming conventions].
@@ -47,7 +48,7 @@ tldr = { version = "0", package = "tldr-traits", default-features = false, featu
 ### Importing the Library
 
 ```rust,ignore
-use tldr::{Tldr, TldrContext, TldrSummary, ToTldr};
+use tldr::{Tldr, TldrContext, TldrResult, TldrSummary, ToTldr};
 ```
 
 ### Implementing the Trait
@@ -59,47 +60,33 @@ struct Rectangle {
 }
 
 impl Tldr for Rectangle {
-    fn what(&self, _ctx: &TldrContext) -> Option<String> {
-        Some(format!("A rectangle with a width of {} and a height of {}.", self.width, self.height))
+    type Error = Box<dyn Error>;
+
+    fn what(&self, _ctx: &TldrContext) -> TldrResult<T> {
+        Ok(Some(format!("A rectangle with a width of {} and a height of {}.", self.width, self.height)))
     }
 }
 ```
 
 ## 📚 Reference
 
-### [`ToTldr`]
-
-```rust,ignore
-pub trait ToTldr {
-    fn to_tldr(&self) -> Box<dyn Tldr>;
-}
-```
+- [`Tldr`](#tldr)
+- [`TldrContext`](#tldrcontext)
+- [`TldrResult`](#tldrresult)
+- [`TldrSummary`](#tldrsummary)
+- [`ToTldr`](#totldr)
 
 ### [`Tldr`]
 
 ```rust,ignore
-pub trait Tldr {
-    fn who(&self, ctx: &TldrContext) -> Option<String>;
-    fn what(&self, ctx: &TldrContext) -> Option<String>;
-    fn when(&self, ctx: &TldrContext) -> Option<String>;
-    fn r#where(&self, ctx: &TldrContext) -> Option<String>;
-    fn why(&self, ctx: &TldrContext) -> Option<String>;
-    fn whence(&self, ctx: &TldrContext) -> Option<String>;
-    fn how(&self, ctx: &TldrContext) -> Option<String>;
-}
-```
-
-### [`TldrSummary`]
-
-```rust
-pub struct TldrSummary {
-    pub who: Option<String>,
-    pub what: Option<String>,
-    pub when: Option<String>,
-    pub r#where: Option<String>,
-    pub why: Option<String>,
-    pub whence: Option<String>,
-    pub how: Option<String>,
+pub trait Tldr<T = String> {
+    fn who(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn what(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn when(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn where(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn why(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn whence(&self, ctx: &TldrContext) -> TldrResult<T>;
+    fn how(&self, ctx: &TldrContext) -> TldrResult<T>;
 }
 ```
 
@@ -108,6 +95,35 @@ pub struct TldrSummary {
 ```rust
 pub struct TldrContext {
     pub language: String,
+}
+```
+
+### [`TldrResult`]
+
+```rust,ignore
+pub type TldrResult<T = String, E = Box<dyn Error>> =
+    Result<Option<T>, E>;
+```
+
+### [`TldrSummary`]
+
+```rust,ignore
+pub struct TldrSummary<T = String> {
+    pub who: Option<T>,
+    pub what: Option<T>,
+    pub when: Option<T>,
+    pub where: Option<T>,
+    pub why: Option<T>,
+    pub whence: Option<T>,
+    pub how: Option<T>,
+}
+```
+
+### [`ToTldr`]
+
+```rust,ignore
+pub trait ToTldr<T = String> {
+    fn to_tldr(&self) -> Box<dyn Tldr<T>>;
 }
 ```
 
@@ -132,5 +148,6 @@ git clone https://github.com/dryrust/tldr.rs.git
 
 [`Tldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.Tldr.html
 [`TldrContext`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrContext.html
+[`TldrResult`]: https://docs.rs/tldr-traits/latest/tldr_traits/type.TldrResult.html
 [`TldrSummary`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrSummary.html
 [`ToTldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.ToTldr.html

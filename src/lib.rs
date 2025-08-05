@@ -14,6 +14,9 @@ extern crate alloc;
 mod context;
 pub use context::*;
 
+mod result;
+pub use result::*;
+
 mod summary;
 pub use summary::*;
 
