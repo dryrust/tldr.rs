@@ -3,6 +3,10 @@
 use alloc::string::String;
 use core::{fmt, str::FromStr};
 
+/// ```rust
+/// # use tldr_traits::TldrLanguage;
+/// let language = TldrLanguage::English;
+/// ```
 #[non_exhaustive]
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
@@ -12,6 +16,15 @@ pub enum TldrLanguage {
     English,
 
     Other(String),
+}
+
+impl From<&str> for TldrLanguage {
+    fn from(input: &str) -> Self {
+        match input {
+            "en" => TldrLanguage::English,
+            _ => TldrLanguage::Other(input.into()),
+        }
+    }
 }
 
 impl FromStr for TldrLanguage {

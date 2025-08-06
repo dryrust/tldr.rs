@@ -3,10 +3,19 @@
 use crate::TldrLanguage;
 use core::str::FromStr;
 
+/// ```rust
+/// # use tldr_traits::TldrContext;
+/// let context = TldrContext::builder()
+///     .language("en")
+///     .build();
+/// ```
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "builder", derive(bon::Builder))]
+#[cfg_attr(feature = "builder", builder(on(TldrLanguage, into)))]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrContext {
+    #[cfg_attr(feature = "builder", builder(default))]
     pub language: TldrLanguage,
 }
 

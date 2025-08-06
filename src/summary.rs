@@ -4,9 +4,24 @@ use crate::{Tldr, TldrContext, TldrResult, ToTldr};
 use alloc::{boxed::Box, string::String};
 use core::fmt::Debug;
 
+/// ```rust
+/// # use tldr_traits::TldrSummary;
+/// let summary: TldrSummary<String> = TldrSummary::builder()
+///     .who("John")
+///     .what("a book")
+///     .when("yesterday")
+///     .r#where("the library")
+///     .why("to learn")
+///     .whence("from the internet")
+///     .how("by reading")
+///     .build();
+/// ```
+///
 /// See: https://en.wikipedia.org/wiki/Five_Ws
 /// See: https://en.wikipedia.org/wiki/Interrogative_word
 #[derive(Clone, Debug, Default)]
+#[cfg_attr(feature = "builder", derive(bon::Builder))]
+#[cfg_attr(feature = "builder", builder(on(T, into)))]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrSummary<T: Clone + Debug + Default = String> {

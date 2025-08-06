@@ -18,16 +18,20 @@ publish = true
 
 [features]
 default = ["all", "std"]
-all = ["serde"]
-std = ["serde?/std"]
+all = ["builder", "serde"]
+std = ["bon?/std", "serde?/std"]
 unstable = []
 
 # Optional features:
+builder = ["dep:bon"]
 serde = ["dep:serde"]
 
 [dependencies]
 
 # Optional dependencies:
+bon = { version = "3.6", default-features = false, features = [
+    "alloc",
+], optional = true }
 serde = { version = "1", default-features = false, features = [
     "alloc",
     "derive",
