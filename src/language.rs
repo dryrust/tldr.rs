@@ -5,8 +5,10 @@ use core::{fmt, str::FromStr};
 
 #[non_exhaustive]
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub enum TldrLanguage {
     #[default]
+    #[cfg_attr(feature = "serde", serde(rename = "en"))]
     English,
 
     Other(String),

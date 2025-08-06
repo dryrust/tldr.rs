@@ -7,26 +7,35 @@ use core::fmt::Debug;
 /// See: https://en.wikipedia.org/wiki/Five_Ws
 /// See: https://en.wikipedia.org/wiki/Interrogative_word
 #[derive(Clone, Debug, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
+#[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrSummary<T: Clone + Debug + Default = String> {
     /// See: https://en.wiktionary.org/wiki/who
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub who: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/what
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub what: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/when
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub when: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/where
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub r#where: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/why
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub why: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/whence
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub whence: Option<T>,
 
     /// See: https://en.wiktionary.org/wiki/how
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub how: Option<T>,
 }
 

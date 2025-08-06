@@ -4,6 +4,8 @@ use crate::TldrLanguage;
 use core::str::FromStr;
 
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
+#[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrContext {
     pub language: TldrLanguage,
 }
