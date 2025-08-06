@@ -1,11 +1,11 @@
 // This is free and unencumbered software released into the public domain.
 
-use alloc::string::String;
+use crate::TldrLanguage;
 use core::str::FromStr;
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
 pub struct TldrContext {
-    pub language: String, // TODO
+    pub language: TldrLanguage,
 }
 
 impl FromStr for TldrContext {
@@ -13,7 +13,7 @@ impl FromStr for TldrContext {
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         Ok(TldrContext {
-            language: input.into(),
+            language: input.parse()?,
         })
     }
 }

@@ -48,7 +48,7 @@ tldr = { version = "0", package = "tldr-traits", default-features = false, featu
 ### Importing the Library
 
 ```rust,ignore
-use tldr::{Tldr, TldrContext, TldrResult, TldrSummary, ToTldr};
+use tldr::{Tldr, TldrContext, TldrLanguage, TldrResult, TldrSummary, ToTldr};
 ```
 
 ### Implementing the Trait
@@ -72,6 +72,7 @@ impl Tldr for Rectangle {
 
 - [`Tldr`](#tldr)
 - [`TldrContext`](#tldrcontext)
+- [`TldrLanguage`](#tldrlanguage)
 - [`TldrResult`](#tldrresult)
 - [`TldrSummary`](#tldrsummary)
 - [`ToTldr`](#totldr)
@@ -92,9 +93,20 @@ pub trait Tldr<T = String> {
 
 ### [`TldrContext`]
 
-```rust
+```rust,ignore
 pub struct TldrContext {
-    pub language: String,
+    pub language: TldrLanguage,
+}
+```
+
+### [`TldrLanguage`]
+
+```rust,ignore
+pub enum TldrLanguage {
+    #[default]
+    English,
+    // ...
+    Other(String),
 }
 ```
 
@@ -148,6 +160,7 @@ git clone https://github.com/dryrust/tldr.rs.git
 
 [`Tldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.Tldr.html
 [`TldrContext`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrContext.html
+[`TldrLanguage`]: https://docs.rs/tldr-traits/latest/tldr_traits/enum.TldrLanguage.html
 [`TldrResult`]: https://docs.rs/tldr-traits/latest/tldr_traits/type.TldrResult.html
 [`TldrSummary`]: https://docs.rs/tldr-traits/latest/tldr_traits/struct.TldrSummary.html
 [`ToTldr`]: https://docs.rs/tldr-traits/latest/tldr_traits/trait.ToTldr.html
