@@ -12,8 +12,8 @@
 - Provides the [`Tldr`](#tldr) trait for generating TL;DR summaries.
 - Provides the [`ToTldr`](#totldr) trait for converting objects into TL;DR
   summaries.
-- Supports TL;DR generation for multiple natural languages.
-- Zero required dependencies, only optional integrations.
+- Supports multilingual TL;DR generation while defaulting to English.
+- Zero required dependencies, only optional integrations with [Serde] & [Bon].
 - Adheres to the Rust API Guidelines in its [naming conventions].
 - 100% free and unencumbered public domain software.
 
@@ -153,7 +153,9 @@ git clone https://github.com/dryrust/tldr.rs.git
 [![Share on Facebook](https://img.shields.io/badge/share%20on-fb-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/dryrust/tldr.rs)
 [![Share on LinkedIn](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/dryrust/tldr.rs)
 
+[Bon]: https://crates.io/crates/bon
 [Rust]: https://rust-lang.org
+[Serde]: https://crates.io/crates/serde
 [TL;DR]: https://en.wikipedia.org/wiki/TL;DR
 [five Ws]: https://en.wikipedia.org/wiki/Five_Ws
 [naming conventions]: https://rust-lang.github.io/api-guidelines/naming.html

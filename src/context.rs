@@ -3,12 +3,17 @@
 use crate::TldrLanguage;
 use core::str::FromStr;
 
+/// A context used when generating TL;DR summaries.
+///
+/// # Examples
+///
 /// ```rust
 /// # use tldr_traits::TldrContext;
 /// let context = TldrContext::builder()
 ///     .language("en")
 ///     .build();
 /// ```
+#[non_exhaustive]
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "builder", derive(bon::Builder))]
 #[cfg_attr(feature = "builder", builder(on(TldrLanguage, into)))]

@@ -3,6 +3,10 @@
 use crate::Tldr;
 use alloc::{boxed::Box, string::String};
 
+/// A trait for converting objects into TL;DR summaries.
+///
+/// # Examples
+///
 /// ```rust
 /// # use tldr_traits::{Tldr, TldrSummary, ToTldr};
 /// struct Rectangle {

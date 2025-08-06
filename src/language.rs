@@ -3,6 +3,10 @@
 use alloc::string::String;
 use core::{fmt, str::FromStr};
 
+/// The language that a TL;DR summary is written in.
+///
+/// # Examples
+///
 /// ```rust
 /// # use tldr_traits::TldrLanguage;
 /// let language = TldrLanguage::default(); // this is the same as...

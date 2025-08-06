@@ -3,4 +3,5 @@
 use alloc::{boxed::Box, string::String};
 use core::error::Error;
 
+/// The result type used throughout the library.
 pub type TldrResult<T = String, E = Box<dyn Error>> = Result<Option<T>, E>;

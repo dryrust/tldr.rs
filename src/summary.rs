@@ -4,6 +4,10 @@ use crate::{Tldr, TldrContext, TldrResult, ToTldr};
 use alloc::{boxed::Box, string::String};
 use core::fmt::Debug;
 
+/// An owned TL;DR summary.
+///
+/// # Examples
+///
 /// ```rust
 /// # use tldr_traits::TldrSummary;
 /// let summary: TldrSummary<String> = TldrSummary::builder()
@@ -17,8 +21,9 @@ use core::fmt::Debug;
 ///     .build();
 /// ```
 ///
-/// See: https://en.wikipedia.org/wiki/Five_Ws
-/// See: https://en.wikipedia.org/wiki/Interrogative_word
+/// See: [en.wikipedia.org/wiki/Five_Ws](https://en.wikipedia.org/wiki/Five_Ws)
+///
+/// See: [en.wikipedia.org/wiki/Interrogative_word](https://en.wikipedia.org/wiki/Interrogative_word)
 #[derive(Clone, Debug, Default)]
 #[cfg_attr(feature = "builder", derive(bon::Builder))]
 #[cfg_attr(feature = "builder", builder(on(T, into)))]
