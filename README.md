@@ -5,7 +5,8 @@
 [![Package](https://img.shields.io/crates/v/tldr-traits)](https://crates.io/crates/tldr-traits)
 [![Documentation](https://docs.rs/tldr-traits/badge.svg)](https://docs.rs/tldr-traits)
 
-[Rust] abstractions for [TL;DR] summarization using the [five Ws].
+[Rust] abstractions for [TL;DR] summarization using the [five Ws]:
+*who?* *what?* *when?* *where?* *why?*
 
 ## ✨ Features
 

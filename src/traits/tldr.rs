@@ -59,37 +59,51 @@ pub trait Tldr<T = String> {
     /// If in doubt, specify this as `Box<dyn Error>`.
     type Error;
 
-    /// See: https://en.wiktionary.org/wiki/who
+    /// Answers the question "Who?"
+    ///
+    /// See: [en.wiktionary.org/wiki/who](https://en.wiktionary.org/wiki/who)
     fn who(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/what
+    /// Answers the question "What?"
+    ///
+    /// See: [en.wiktionary.org/wiki/what](https://en.wiktionary.org/wiki/what)
     fn what(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/when
+    /// Answers the question "When?"
+    ///
+    /// See: [en.wiktionary.org/wiki/when](https://en.wiktionary.org/wiki/when)
     fn when(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/where
+    /// Answers the question "Where?"
+    ///
+    /// See: [en.wiktionary.org/wiki/where](https://en.wiktionary.org/wiki/where)
     fn r#where(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/why
+    /// Answers the question "Why?"
+    ///
+    /// See: [en.wiktionary.org/wiki/why](https://en.wiktionary.org/wiki/why)
     fn why(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/whence
+    /// Answers the question "Whence?" (i.e., "From where?")
+    ///
+    /// See: [en.wiktionary.org/wiki/whence](https://en.wiktionary.org/wiki/whence)
     fn whence(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }
 
-    /// See: https://en.wiktionary.org/wiki/how
+    /// Answers the question "How?"
+    ///
+    /// See: [en.wiktionary.org/wiki/how](https://en.wiktionary.org/wiki/how)
     fn how(&self, _ctx: &TldrContext) -> TldrResult<T, Self::Error> {
         Ok(None)
     }

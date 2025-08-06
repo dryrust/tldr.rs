@@ -20,6 +20,7 @@ use core::str::FromStr;
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrContext {
+    /// The language to use when generating TL;DR summaries.
     #[cfg_attr(feature = "builder", builder(default))]
     pub language: TldrLanguage,
 }

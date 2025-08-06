@@ -16,10 +16,12 @@ use core::{fmt, str::FromStr};
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub enum TldrLanguage {
+    /// The English language (the default).
     #[default]
     #[cfg_attr(feature = "serde", serde(rename = "en"))]
     English,
 
+    /// Another language.
     Other(String),
 }
 

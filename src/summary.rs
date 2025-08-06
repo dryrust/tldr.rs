@@ -30,31 +30,45 @@ use core::fmt::Debug;
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
 pub struct TldrSummary<T: Clone + Debug + Default = String> {
-    /// See: https://en.wiktionary.org/wiki/who
+    /// Answers the question "Who?"
+    ///
+    /// See: [en.wiktionary.org/wiki/who](https://en.wiktionary.org/wiki/who)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub who: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/what
+    /// Answers the question "What?"
+    ///
+    /// See: [en.wiktionary.org/wiki/what](https://en.wiktionary.org/wiki/what)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub what: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/when
+    /// Answers the question "When?"
+    ///
+    /// See: [en.wiktionary.org/wiki/when](https://en.wiktionary.org/wiki/when)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub when: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/where
+    /// Answers the question "Where?"
+    ///
+    /// See: [en.wiktionary.org/wiki/where](https://en.wiktionary.org/wiki/where)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub r#where: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/why
+    /// Answers the question "Why?"
+    ///
+    /// See: [en.wiktionary.org/wiki/why](https://en.wiktionary.org/wiki/why)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub why: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/whence
+    /// Answers the question "Whence?" (i.e., "From where?")
+    ///
+    /// See: [en.wiktionary.org/wiki/whence](https://en.wiktionary.org/wiki/whence)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub whence: Option<T>,
 
-    /// See: https://en.wiktionary.org/wiki/how
+    /// Answers the question "How?"
+    ///
+    /// See: [en.wiktionary.org/wiki/how](https://en.wiktionary.org/wiki/how)
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub how: Option<T>,
 }
