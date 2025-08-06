@@ -59,10 +59,10 @@ struct Rectangle {
     height: u32,
 }
 
-impl Tldr for Rectangle {
+impl Tldr<String> for Rectangle {
     type Error = Box<dyn Error>;
 
-    fn what(&self, _ctx: &TldrContext) -> TldrResult<T> {
+    fn what(&self, _ctx: &TldrContext) -> TldrResult<String> {
         Ok(Some(format!("A rectangle with a width of {} and a height of {}.", self.width, self.height)))
     }
 }

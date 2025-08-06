@@ -5,6 +5,7 @@ use core::{fmt, str::FromStr};
 
 /// ```rust
 /// # use tldr_traits::TldrLanguage;
+/// let language = TldrLanguage::default(); // this is the same as...
 /// let language = TldrLanguage::English;
 /// ```
 #[non_exhaustive]

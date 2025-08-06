@@ -3,6 +3,23 @@
 use crate::{TldrContext, TldrResult};
 use alloc::string::String;
 
+/// ```rust
+/// # use tldr_traits::{Tldr, TldrContext, TldrResult};
+/// # use core::error::Error;
+/// struct Rectangle {
+///     width: u32,
+///     height: u32,
+/// }
+///
+/// impl Tldr<String> for Rectangle {
+///     type Error = Box<dyn Error>;
+///
+///     fn what(&self, _ctx: &TldrContext) -> TldrResult<String> {
+///         Ok(Some(format!("A rectangle with a width of {} and a height of {}.", self.width, self.height)))
+///     }
+/// }
+/// ```
+///
 /// See: https://en.wikipedia.org/wiki/Five_Ws
 /// See: https://en.wikipedia.org/wiki/Interrogative_word
 pub trait Tldr<T = String> {
